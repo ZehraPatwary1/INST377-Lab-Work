@@ -78,7 +78,55 @@
     justify-content: center;
   }
   
-  .carousel
+  .carousel {
+      overflow: hidden;
+      max-width: 600px;
+      position: relative;
+  }
+
+  .carousel .carousel_items,
+  .carousel .carousel_item--hidden {
+      display: none;
+  }
+
+  .carousel .carousel_item img {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+  }
+
+  .carousel .carousel_item--visible {
+      display: block;
+  }
+
+  .carousel .carousel_actions {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      position: absoulute;
+      top: 50%;
+      transform: translateY(-50%);
+  }
+
+  .carousel .carousel_actions button {
+      border-radius: 50px;
+      border: 0;
+      font-weight: bold;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+
+  }
+
+  .carousel .carousel_actions button#carousel_button--prev {
+      margin-left: 20px;
+      
+      
+  }
+
+  .carousel .carousel_actions button#carousel_button--next {
+     margin-right: 20px;
+  }
 
 
   .photo-grid {
