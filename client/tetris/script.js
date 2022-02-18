@@ -59,88 +59,88 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function undraw() {
-    current.forEach((index) => {
-      squares[currentPosition + index].classList.remove('tetromino');
-    });
+    current.forEach(index => {
+      squares[currentPosition + index].classList.remove('tetromino')
+    })
   }
 
   function control(e) {
     if (!isGameOver) {
       if (e.keyCode === 37) {
-        moveLeft();
+        moveLeft()
       } else if (e.keyCode === 38) {
-        rotate();
+        rotate()
       } else if (e.keyCode === 39) {
-        moveRight();
+        moveRight()
       } else if (e.keyCode === 40) {
-        moveDown();
+        moveDown()
       }
     }
   }
 
-  document.addEventListener('keyup', control);
+  document.addEventListener('keyup', control)
 
   function moveDown() {
-    undraw();
-    currentPosition += width;
-    draw();
-    freeze();
+    undraw()
+    currentPosition += width
+    draw()
+    freeze()
   }
 
   function freeze() {
-    if (current.some((index) => squares[currentPosition + index + width].classList.contains('taken'))) {
-      current.forEach((index) => squares[currentPosition + index].classList.contains('taken'));
+    if (current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
+      current.forEach((index) => squares[currentPosition + index].classList.contains('taken'))
       random = nextRandom;
-      nextRandom = Math.floor(Math.random() * tetrominoes.length);
-      current = tetrominoes[random][currentRotation];
-      currentPosition = 4;
-      draw();
-      displayShape();
-      addScore();
-      gameOver();
+      nextRandom = Math.floor(Math.random() * tetrominoes.length)
+      current = tetrominoes[random][currentRotation]
+      currentPosition = 4
+      draw()
+      displayShape()
+      addScore()
+      gameOver()
     }
   }
 
   function moveLeft () {
-    undraw();
-    const isAtLeftEdge = current.some((index) => (currentPosition + index) % width === 0);
+    undraw()
+    const isAtLeftEdge = current.some((index) => (currentPosition + index) % width === 0)
 
-    if (!isAtLeftEdge) currentPosition -= 1;
+    if (!isAtLeftEdge) currentPosition -= 1
 
-    if (current.some((index) => squares[currentPosition + index].classList.contains('taken'))) {
-      currentPosition += 1;
+    if (current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
+      currentPosition += 1
     }
 
-    draw();
+    draw()
   }
 
   function moveRight() {
-    undraw();
-    const isAtRightEdge = current.some((index) => (currentPosition + index) % width === width - 1);
+    undraw()
+    const isAtRightEdge = current.some(index => (currentPosition + index) % width === width - 1)
 
-    if (!isAtRightEdge) currentPosition += 1;
+    if (!isAtRightEdge) currentPosition += 1
 
-    if (current.some((index) => squares[currentPosition + index].classList.contains('taken'))) {
-      currentPosition -= 1;
+    if (current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
+      currentPosition -= 1
     }
 
-    draw();
+    draw()
   }
 
   function rotate() {
-    undraw();
-    currentRotation++;
+    undraw()
+    currentRotation++
     if (currentRotation === current.length) {
-      currentRotation = 0;
+      currentRotation = 0
     }
 
-    current = tetrominoes[random][currentRotation];
-    draw();
+    current = tetrominoes[random][currentRotation]
+    draw()
   }
 
-  const displaySquares = document.querySelectorAll('.mini-grid div');
-  const displayWidth = 4;
-  const displayIndex = 0;
+  const displaySquares = document.querySelectorAll('.mini-grid div')
+  const displayWidth = 4
+  const displayIndex = 0
 
   const upNextTetrominoes = [
     [1, displayWidth + 1, displayWidth * 2 + 1, 2],
@@ -148,51 +148,51 @@ document.addEventListener('DOMContentLoaded', () => {
     [1, displayWidth, displayWidth + 1, displayWidth + 2],
     [0, 1, displayWidth, displayWidth + 1],
     [1, displayWidth + 1, displayWidth * 2 + 1, displayWidth * 3 + 1]
-  ];
+  ]
   function displayShape() {
     displaySquares.forEach((square) => {
-      square.classList.remove('tetromino');
-    });
+      square.classList.remove('tetromino')
+    })
     upNextTetrominoes[nextRandom].forEach((index) => {
-      displaySquares[displayIndex + index].classList.add('tetromino');
-    });
+      displaySquares[displayIndex + index].classList.add('tetromino')
+    })
   }
 
   startBtn.addEventListener('click', () => {
     if (timerID) {
-      clearInterval(timerID);
-      timerID = null;
+      clearInterval(timerID)
+      timerID = null
     } else {
-      draw();
-      timerID = setInterval(moveDown, 1000);
-      nextRandom = Math.floor(Math.random() * tetrominoes.length);
-      displayShape();
+      draw()
+      timerID = setInterval(moveDown, 1000)
+      nextRandom = Math.floor(Math.random() * tetrominoes.length)
+      displayShape()
     }
-  });
+  })
 
   function addScore() {
     for (let i = 0; i < 199; i += width) {
-      const row = [i, i + 1, i + 2, i + 3, i + 4, i + 4, i + 6, i + 7, i + 8, i + 9];
+      const row = [i, i + 1, i + 2, i + 3, i + 4, i + 4, i + 6, i + 7, i + 8, i + 9]
 
-      if (row.every((index) => squares[index].classList.contains('taken'))) {
-        score += 10;
-        scoreDisplay.innerHTML = score;
-        row.forEach((index) => {
-          squares[index].classList.remove('taken');
-          squares[index].classList.remove('tetromino');
-        });
-        const squaresRemoved = squares.splice(i, width);
-        squares = squaresRemoved.concat(squares);
-        squares.forEach((cell) => grid.appendChild(cell));
+      if (row.every(index => squares[index].classList.contains('taken'))) {
+        score += 10
+        scoreDisplay.innerHTML = score
+        row.forEach(index => {
+          squares[index].classList.remove('taken')
+          squares[index].classList.remove('tetromino')
+        })
+        const squaresRemoved = squares.splice(i, width)
+        squares = squaresRemoved.concat(squares)
+        squares.forEach(cell => grid.appendChild(cell))
       }
     }
   }
 
   function gameOver() {
-    if (current.some((index) => squares[currentPosition + index].classList.contains('taken'))) {
-      scoreDisplay.innerHTML = 'end';
-      clearInterval(timerID);
-      isGameOver = true;
+    if (current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
+      scoreDisplay.innerHTML = 'end'
+      clearInterval(timerID)
+      isGameOver = true
     }
   }
 });
