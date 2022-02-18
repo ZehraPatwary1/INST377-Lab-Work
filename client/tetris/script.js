@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'purple',
       'green',
       'blue'
-  ]
+  ];
 
   const lTetromino = [
     [1, width + 1, width * 2 + 1, 2],
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function draw() {
     current.forEach(index => {
       squares[currentPosition + index].classList.add('tetromino');
-    });
+    })
   }
 
   function undraw() {
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
   timerID = setInterval(moveDown, 1000);
 
   function control(e) {
-    if (!isGameOver) {
+    
       if (e.keyCode === 37) {
         moveLeft();
       } else if (e.keyCode === 38) {
@@ -157,14 +157,17 @@ document.addEventListener('DOMContentLoaded', () => {
     [1, displayWidth + 1, displayWidth * 2 + 1, displayWidth * 3 + 1]
   ];
   function displayShape() {
-    displaySquares.forEach(square => {
+    displaySquares.forEach((square) => {
       square.classList.remove('tetromino');
+      square.style.backgroundColor = '';
     });
-    upNextTetrominoes[nextRandom].forEach((index) => {
+    upNextTetrominoes[nextRandom].forEach(index => {
 
-        displaySquares[displayIndex + index].classList.add('tetromino');
+        displaySquares[displayIndex + index].classList.add('tetromino')
+        displaySquares[displayIndex + index].style.backgroundColor = colors[nextRandom]
     });
-  }
+
+}
 
   startBtn.addEventListener('click', () => {
     if (timerID) {
@@ -203,4 +206,4 @@ document.addEventListener('DOMContentLoaded', () => {
       
     }
   }
-}
+});
