@@ -4,12 +4,17 @@
   box-sizing: border-box;
 }
 
+html {
+  height:100%;
+}
+
 body {
   margin: 0;
-  padding: 0;
+  padding: 30px;
   font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
     ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
-  background-color: darkslategray;
+  background-color: rgb(1, 32, 97);
+  height: 100%;
 }
 
 /* Page Layout */
@@ -21,7 +26,64 @@ body {
 .wrapper {
   display: flex;
 }
+
+.title {
+  background-color: rgb(164, 224, 224);
+  color: rgb(0, 0, 0);
+  border-radius: 40px;
+  padding: 10px;
+
+}
+
+
+form {
+  margin-left: 100px;
+  margin-bottom: 25px;
+  width: 25%;
+  background-color:lavender;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.label {
+  color: rgb(105, 105, 105);
+}
+
+.submit {
+  padding-top: 30px;
+  
+}
+
+.radio {
+  color: rgb(137, 194, 32);
+}
+
+button {
+  background-color: rgb(126, 240, 215);
+  border: none;
+  color: white;
+  padding: 15px 35px;
+  text-align: center;
+  text-decoration: none;
+  display:inline-block;
+  font-size: 15px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
 .container {
   max-width: 960px;
   margin-top: 25px;
+ 
+}
+
+.col {
+  color:black;
+  margin-left: 50px;
+  height: 50px;
+  padding: 10px;
+  background-color:rgb(126, 240, 215);
+  align-self:center;
+  border-radius: 10px;
+
 }
