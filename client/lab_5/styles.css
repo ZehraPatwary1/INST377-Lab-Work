@@ -45,29 +45,29 @@ form {
   border-radius: 10px;
 }
 
-.label {
+.label  {
   color: rgb(105, 105, 105);
 }
 
 .submit {
   padding-top: 30px;
+
   
 }
 
-.radio {
+.radio  {
   color: rgb(137, 194, 32);
 }
 
-button {
+button  {
   background-color: rgb(126, 240, 215);
   border: none;
-  color: white;
   padding: 15px 35px;
   text-align: center;
   text-decoration: none;
   display:inline-block;
   font-size: 15px;
-  border-radius: 20px;
+  border-radius: 0px;
   cursor: pointer;
 }
 
@@ -77,13 +77,13 @@ button {
  
 }
 
-.col {
+.col  {
   color:black;
   margin-left: 50px;
   height: 50px;
   padding: 10px;
   background-color:rgb(126, 240, 215);
-  align-self:center;
+  align-items:center;
   border-radius: 10px;
 
 }
