@@ -37,7 +37,7 @@ body {
 }
 
 
-form {
+form  {
   margin-left: 100px;
   margin-bottom: 25px;
   width: 25%;
@@ -73,16 +73,21 @@ button  {
 .container {
   max-width: 960px;
   margin-top: 25px;
- 
+  
 }
 
 .col  {
   color:black;
-  margin-left: 50px;
+  margin-left: 40%;
   height: 50px;
   padding: 10px;
   background-color:rgb(126, 240, 215);
   align-items:center;
   border-radius: 10px;
+  margin-bottom: 10%;
+  margin-right: 15%;
+  margin-top: -15%;
+  
+  
 
 }
