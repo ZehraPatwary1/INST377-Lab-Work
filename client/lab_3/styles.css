@@ -104,6 +104,8 @@
   .footer {
     display: flex;
     justify-content: space-between;
+    font-weight: bold;
+    
   }
   
   .footer-item {
