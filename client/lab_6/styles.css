@@ -50,7 +50,9 @@
     color: rgb(80, 79, 79);
   }
   
-  
+  .submit {
+    padding-top: 10px;
+  }
     
   .radio  {
     color: rgb(29, 180, 41);

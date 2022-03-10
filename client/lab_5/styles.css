@@ -5,7 +5,8 @@
 }
 
 html {
-  height:100%;
+  min-height:100%;
+  background-color: rgb(1, 32, 97);
 }
 
 body {
@@ -14,7 +15,7 @@ body {
   font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
     ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
   background-color: rgb(1, 32, 97);
-  height: 100%;
+  
 }
 
 /* Page Layout */
@@ -28,65 +29,54 @@ body {
   display: flex;
 }
 
+.container {
+  max-width: 960px;
+  margin-top: 25px;
+  margin: auto;
+  
+}
 .title {
   background-color: rgb(164, 224, 224);
-  color: rgb(0, 0, 0);
-  border-radius: 40px;
-  padding: 10px;
-
+  width: 100%;
+  border-radius: 4px;
+  padding: 15px;
+  margin-top: 25px;
 }
 
 
-form  {
-  margin-left: 100px;
-  margin-bottom: 25px;
-  width: 25%;
+#form  {
+  margin-left: 50px;
+  min-width: 250px;
   background-color:lavender;
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.label  {
-  color: rgb(80, 79, 79);
+  padding: 15px;
+  border-radius: 4px;
 }
 
 
   
 .radio  {
+  display: block;
+  margin-bottom: 5px;
   color: rgb(29, 180, 41);
 }
 
-button  {
+.button  {
   background-color: rgb(48, 48, 241);
   border: none;
-  color: rgb(159, 159, 236);
-  padding: 15px 35px;
-  text-align: center;
-  text-decoration: none;
-  display:inline-block;
-  font-size: 15px;
-  border-radius:50px;
+  margin-top: 10px;
   cursor: pointer;
 }
 
-.container {
-  max-width: 960px;
-  margin-top: 25px;
-  
+
+.columns {
+  align-items: center;
+  justify-content: center;
+}
+#third_box {
+  margin-left: 50px;
+  background-color:lavender;
 }
 
-.col  {
-  color:black;
-  margin-left: 38%;
-  height: 50px;
-  padding: 10px;
-  background-color:rgb(126, 240, 215);
-  align-items:center;
-  border-radius: 10px;
-  margin-bottom: 10%;
-  margin-right: 15%;
-  margin-top: -18%;
-  
-  
 
-}
+  
+  
