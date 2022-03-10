@@ -8,20 +8,30 @@ function getRandomIntInclusive(min, max) {
 
 function dataHandler(dataArray) {
   console.log('fired dataHandler');
-  console.table(dataArray);
+  //console.table(dataArray);
   const range = [...Array(15).keys()];
   const listItems = range.map((item, index) => {
     const restNum = getRandomIntInclusive(0, dataArray.length - 1);
 
     return dataArray[restNum];
   });
-  console.log(listItems);
+  //console.log(listItems);
   return listItems;
 
-//   range.forEach((item) => {
-//     console.log('range item', item);
-//   });
-// } 
+
+function createHtmlList(collection) {
+  console.log('fired HTML creator');
+  console.log(collection);
+  const targetList = document.querySelector(".resto-list");
+  targetList.innerHTML = '';
+  collection.forEach((item) => {
+    const injectThisItem = `<li>${item.name}</li>`;
+    targetList.innerHTML += injectThisItem;
+
+  });
+   
+}
+
 
 // As the last step of your lab, hook this up to index.html
 async function mainEvent() { // the async keyword means we can make API requests
@@ -41,6 +51,7 @@ async function mainEvent() { // the async keyword means we can make API requests
       console.log('form submission'); // this is substituting for a "breakpoint"
 
       const restoArray = dataHandler(arrayFromJson.data);
+      createHtmlList(restoArray);
     });
   }
 }
