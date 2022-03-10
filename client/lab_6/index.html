@@ -9,10 +9,15 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1 class="title">Zehra Patwary's Lab 5</h1>
-    <div class="container">
-        <form action="" method='get' class='form'>
-            <div class="field">
+    <div class="wrapper">
+        <div class="container">
+             <div class="title">Zehra Patwary's Lab 5</div>
+
+             <div class="columns">
+            <div class="column is-narrow">
+    
+                <form id="form" method='get' class='form box'>
+                    <div class="field">
                 <label class="label">First Name</label>
                 <div class="control">
                     <input class="input" type="text" name="first-name">
@@ -26,28 +31,24 @@
                 </div>
             </div>
 
-            <div class="control">
-                <label class="label">Veggie or Vegan?</label>
-                <label class="radio">
-                    <input type="radio" name="Veggie">
-                    Yes
-                </label>
-                <label class="radio">
-                    <input type="radio" name="Vegan">
-                    No
-                </label>
-                </div>
-                <button class="button">Submit</button>
+            <div class="legacy-form-row">
+                <legend>Veggie or Vegan?</legend>
+            <input id='yes' name='answer' type='radio' value='yes' />
+            <label for='yes' class='radio-label'>Yes</label>
+            <input id='no' name='answer' type='radio' value='no'/> 
+            <label for='no' class='radio-label'>No</label>
+          </div>
+                <button class="button">Submit</button>  
         </form>
-
-    </div>
+            </div>
     
-        <div class="col">
-            <ul id="resto-list">
-                Restaurant List
-            </ul>
-    </div> 
-
+        <div class="col is-two-thirds">
+            <div id="third_box" class="box"> This is going to be something in two weeks.</div>
+        </div>
+        </div> 
+        </div>
+        </div>
+    
     <script src="script.js"></script>
 
 </body>
