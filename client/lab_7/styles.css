@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    min-height:100%;
+    background-color: rgb(1, 32, 97);
+  }
+  
+  body {
+    margin: 0;
+    padding: 30px;
+    font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
+      ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+    background-color: rgb(1, 32, 97);
+    
+  }
+  
+  /* Page Layout */
+  .columns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 35px;
+    
+  }
+
+  .columns form {
+      display: flex;
+      flex-direction: column;
+  }
+  
+  .wrapper {
+    display: flex;
+  }
+  
+  .container {
+    margin-top: 25px;
+    background-color: chartreuse;
+    justify-content: space-around;
+    display: flex;
+    
+  }
+
+  .header {
+      display:block;
+      padding: 15px;
+      border-radius: 4px;
+      background-color: gold;
+      margin-top: 25px;
+
+  }
+  
+  
+  .page_item {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border-radius: 4px;
+    background-color: lavender;
+    height: fit-content;
+    margin: 20px;
+  }
+
+
+  
+  .form_item {
+      display:flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      margin: 5px;
+  }
+
+  .submit_button {
+      display: 
+  }
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  .radio  {
+    display: block;
+    margin-bottom: 5px;
+    color: rgb(29, 180, 41);
+  }
+  
+  .button  {
+    background-color: rgb(118, 118, 233);
+    border: none;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  
+  
