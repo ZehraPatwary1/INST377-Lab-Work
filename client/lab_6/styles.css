@@ -22,7 +22,15 @@ body {
 .columns {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 35px;
   
+}
+
+.columns form {
+    display: flex;
+    flex-direction: column;
 }
 
 .wrapper {
@@ -30,18 +38,21 @@ body {
 }
 
 .container {
-  max-width: 960px;
   margin-top: 25px;
-  margin: auto;
+  justify-content: space-around;
+  display: flex;
   
 }
-.title {
-  background-color: rgb(164, 224, 224);
-  width: 100%;
-  border-radius: 4px;
-  padding: 15px;
-  margin-top: 25px;
+
+.header {
+    display:block;
+    padding: 15px;
+    border-radius: 4px;
+    background-color: gold;
+    margin-top: 25px;
+
 }
+
 
 .page_item {
   display: flex;
@@ -54,12 +65,16 @@ body {
 }
 
 
-#form  {
-  margin-left: 50px;
-  min-width: 250px;
-  background-color:lavender;
-  padding: 15px;
-  border-radius: 4px;
+
+.form_item {
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 5px;
+}
+
+.submit_button {
+    display: 
 }
 
 
@@ -69,21 +84,3 @@ body {
   margin-bottom: 5px;
   color: rgb(29, 180, 41);
 }
-
-.button  {
-  background-color: rgb(48, 48, 241);
-  border: none;
-  margin-top: 10px;
-  cursor: pointer;
-}
-
-
-.columns {
-  align-items: center;
-  justify-content: center;
-}
-#third_box {
-  margin-left: 50px;
-  background-color:lavender;
-}
-  

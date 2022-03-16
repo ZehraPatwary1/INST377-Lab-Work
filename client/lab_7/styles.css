@@ -39,7 +39,6 @@
   
   .container {
     margin-top: 25px;
-    background-color: chartreuse;
     justify-content: space-around;
     display: flex;
     
@@ -79,28 +78,10 @@
   }
 
 
-
-
-
-
-
-
-
-
-  
-  
     
   .radio  {
     display: block;
     margin-bottom: 5px;
     color: rgb(29, 180, 41);
   }
-  
-  .button  {
-    background-color: rgb(118, 118, 233);
-    border: none;
-    margin-top: 10px;
-    cursor: pointer;
-  }
-  
   
