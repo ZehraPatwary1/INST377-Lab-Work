@@ -27,7 +27,7 @@ function getRandomIntInclusive(min, max) {
     collection.forEach((item) => {
         const {name} = item;
         const displayName = name.toLowerCase();
-      const injectThisItem = `<li>${item.name}</li>`;
+      const injectThisItem = `<li>${displayName}</li>`;
       targetList.innerHTML += injectThisItem;
   
     });
