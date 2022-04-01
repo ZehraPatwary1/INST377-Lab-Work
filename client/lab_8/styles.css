@@ -18,7 +18,7 @@
     
   }
 
-  #map { height: 180px; }
+  #map { height: 360px; }
   
   /* Page Layout */
   .columns {
@@ -69,7 +69,7 @@
   .page_item_wide {
     width: 640px;
   }
-
+  
 
   .form_item {
       display:flex;
@@ -83,10 +83,4 @@
   }
 
 
-    
-  .radio  {
-    display: block;
-    margin-bottom: 5px;
-    color: rgb(29, 180, 41);
-  }
   

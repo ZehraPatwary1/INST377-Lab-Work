@@ -34,8 +34,9 @@ function createHtmlList(collection) {
 
 }
 
-function initMap() {
-  const map = L.map('map').setView([51.505, -0.09], 13);
+function initMap(targetId) {
+  const latLong = [38.7849, -76.8721];
+  const map = L.map(targetId).setView(latLong, 13);
   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
@@ -47,6 +48,13 @@ function initMap() {
   return map;
 
 }
+function addMapMarkers(map, collection){
+  collection.forEach(item => {
+    const point = item.geocoded_column_1?.coordinates;
+    console.log(item.geocoded_column_1?.coordinates);
+    L.marker(point[1], point[0]).addTo(map);
+  });
+}
 
 
 // As the last step of your lab, hook this up to index.html
@@ -55,29 +63,39 @@ async function mainEvent() { // the async keyword means we can make API requests
   const form = document.querySelector('.main_form'); // change this selector to match the id or classname of your actual form
   const submit = document.querySelector('.submit_button');
 
-  const  resto = document.querySelector('#resto_name');
-  const  zipcode = document.querySelector('#zipcode');
-  const map = initMap();
+  const resto = document.querySelector('#resto_name');
+  const zipcode = document.querySelector('#zipcode');
+  const map = initMap('map');
+  const retrievalVar = 'restaurants';
   submit.style.display = 'none';
 
-  //const results = await fetch('/api/foodServicesPG');
-  //const arrayFromJson = await results.json(); // This changes it into data we can use - an object
-  //console.log(arrayFromJson);
-  let arrayFromJson = {data: []};
+  if (localStorage.getItem(retrievalVar) === undefined) {
+    const results = await fetch('/api/foodServicesPG');
+    const arrayFromJson = await results.json(); // This changes it into data we can use - an object
+    console.log(arrayFromJson);
+    localStorage.setItem(retrievalVar, JSON.stringify(arrayFromJson.data));
+  }
 
-  if (arrayFromJson.data.length > 0) {
+  const storedDataString = localStorage.getItem(retrievalVar);
+
+  const storedDataArray = JSON.parse(storedDataString);
+
+  console.log(storedDataArray);
+  //const arrayFromJson = {data: []};
+
+  if (storedDataArray.length > 0) {
     submit.style.display = 'block';
 
     let currentArray = [];
     resto.addEventListener('input', async(event) => {
       console.log(event.target.value);
 
-      if (currentArray.length < 1) {
-        return;
+      //if (currentArray.length < 1) {
+        //console.log('empty');
+       // return;
+      //}
 
-      }
-
-      const selectResto = currentArray.filter((item) => {
+      const selectResto = storedDataArray.filter((item) => {
         const lowerName = item.name.toLowerCase();
         const lowerValue = event.target.value.toLowerCase();
         return lowerName.includes(lowerValue);
@@ -92,9 +110,10 @@ async function mainEvent() { // the async keyword means we can make API requests
       submitEvent.preventDefault(); // This prevents your page from refreshing!
       //console.log('form submission'); // this is substituting for a "breakpoint"
 
-      currentArray = restoArrayMake(arrayFromJson.data);
-      console.log(currentArray)
+      currentArray = restoArrayMake(storedDataArray);
+      console.log(currentArray);
       createHtmlList(currentArray);
+      addMapMarkers(map, currentArray);
     });
   }
 }
