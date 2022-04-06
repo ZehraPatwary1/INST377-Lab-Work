@@ -32,8 +32,8 @@ function createHtmlList(collection) {
 }
 
 function initMap(targetId) {
-  // const latLong = [38.7849, 76.8721];
-  const map = L.map(targetId).setView([51.505, -0.09], 13);
+  const latLong = [38.7849, -76.8721];
+  const map = L.map(targetId).setView(latLong, 13);
   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
@@ -45,22 +45,37 @@ function initMap(targetId) {
   return map;
 }
 
-async function mainEvent() { 
+function addMapMarkers(map, collection) {
+  collection.forEach(item => {
+    const point = item.geocoded_column_1?.coordinates;
+    console.log(item.geocoded_column_1?.coordinates);
+    L.marker([point[1], point[0]]).addTo(map);
+  });
+}
+
+async function mainEvent() {
   console.log('script loaded');
-  const form = document.querySelector('.main_form'); 
+  const form = document.querySelector('.main_form');
   const submit = document.querySelector('.submit_button');
 
   const resto = document.querySelector('#resto_name');
   const zipcode = document.querySelector('#zipcode');
   const map = initMap('map');
+  const retrievalVar = 'restaurants';
   submit.style.display = 'none';
 
-  const results = await fetch('/api/foodServicesPG');
-  const arrayFromJson = await results.json(); 
-  console.log(arrayFromJson);
+  if (localStorage.getItem(retrievalVar) === undefined) {
+    const results = await fetch('/api/foodServicesPG');
+    const arrayFromJson = await results.json();
+    console.log(arrayFromJson);
+    localStorage.setItem(retrievalVar, JSON.stringify(arrayFromJson.data));
+  }
+  const storedDataString = localStorage.getItem(retrievalVar);
+  const storedDataArray = JSON.parse(storedDataString);
+  console.log(storedDataArray);
   // const arrayFromJson = {data: []};
 
-  if (arrayFromJson.data.length > 0) {
+  if (storedDataArray.length > 0) {
     submit.style.display = 'block';
 
     let currentArray = [];
@@ -71,7 +86,7 @@ async function mainEvent() {
         return;
       }
 
-      const selectResto = currentArray.filter((item) => {
+      const selectResto = storedDataArray.filter((item) => {
         const lowerName = item.name.toLowerCase();
         const lowerValue = event.target.value.toLowerCase();
         return lowerName.includes(lowerValue);
@@ -81,13 +96,14 @@ async function mainEvent() {
       createHtmlList(selectResto);
     });
 
-    form.addEventListener('submit', async (submitEvent) => { 
-      submitEvent.preventDefault(); 
+    form.addEventListener('submit', async (submitEvent) => {
+      submitEvent.preventDefault();
       // console.log('form submission'); // this is substituting for a "breakpoint"
 
-      currentArray = restoArrayMake(arrayFromJson.data);
+      currentArray = restoArrayMake(storedDataArray);
       console.log(currentArray);
       createHtmlList(currentArray);
+      addMapMarkers(map, currentArray);
     });
   }
 }
