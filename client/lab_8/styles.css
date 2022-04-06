@@ -17,9 +17,8 @@
     background-color: rgb(1, 32, 97);
     
   }
-
-  #map { height: 360px; }
   
+  #map { height: 360px; }
   /* Page Layout */
   .columns {
     display: flex;
@@ -71,6 +70,7 @@
   }
   
 
+
   .form_item {
       display:flex;
       flex-direction: column;
@@ -78,9 +78,5 @@
       margin: 5px;
   }
 
-  .submit_button {
-      display: 
-  }
-
-
+  
   
